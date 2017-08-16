@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <title>邻里</title>
+  <body>
+    <form action="image_save" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend>Add a product</legend>
+        
+        <p>
+            <label for="image">Product Image: </label>
+            <input type="file" name="images[0]"/>
+        </p>
+        <p id="buttons">
+            <input id="reset" type="reset" tabindex="4">
+            <input id="submit" type="submit" tabindex="5" 
+                value="Add Product">
+        </p>
+    </fieldset>
+	</form>
+	
+	<table>
+	<tr>
+	<td nowrap width="437"></td>
+	<td>
+		<img id="img" src="verifi_code" />
+		<a href='#' onclick="javascript:changeImg()"><label>看不清？</label></a>
+	</td>
+	</tr>
+	</table>
+   
+ 
+ 
+ <!-- 触发JS刷新-->
+ <script type="text/javascript">
+	function changeImg(){
+		var img = document.getElementById("img");  
+		img.src = "verifi_code?date=" + new Date();
+	} 
+</script>
+  </body>
+
+</html>
