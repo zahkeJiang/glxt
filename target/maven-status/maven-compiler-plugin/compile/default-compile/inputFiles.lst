@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\program file\Sublime\glxt\src\main\java\com\bjpygh\glxt\controller\DsInfoController.java
 D:\program file\Sublime\glxt\src\main\java\com\bjpygh\glxt\entity\DsInformation.java
 D:\program file\Sublime\glxt\src\main\java\com\bjpygh\glxt\entity\DsOrder.java
@@ -19,3 +20,29 @@ D:\program file\Sublime\glxt\src\main\java\com\bjpygh\glxt\utils\VerifyCodeUtils
 D:\program file\Sublime\glxt\src\main\java\com\bjpygh\glxt\dao\DsInfoDao.java
 D:\program file\Sublime\glxt\src\main\java\com\bjpygh\glxt\controller\ImageController.java
 D:\program file\Sublime\glxt\src\main\java\com\bjpygh\glxt\dao\Main.java
+=======
+D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\OrderController.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\DsInformation.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\Employee.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\mapper\DsInfoMapper.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\UserCouponDao.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\UserCoupon.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\DsInfoDao.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\BaseController.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\DsPackageDao.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\ImageController.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\DsOrderDao.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\mapper\DsOrderMapper.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\DsInfoController.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\DsPackage.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\utils\VerifyCodeUtils.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\LoginController.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\DsOrder.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\mapper\DsPackageMapper.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\PackageController.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\Status.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\Main.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\DsImage.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\mapper\UserCouponMapper.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\utils\SqlSessionFactoryUtil.java
+>>>>>>> a4f79a4365703dd087c24d8a8004a2acc2224a06

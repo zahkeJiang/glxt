@@ -17,6 +17,14 @@
 			<result column="real_name" property="realname"/>
 			<result column="note" property="note"/>
 			<result column="user_id" property="userid"/>
+			<result column="description" property="description"/>
+			<result column="pay_time" property="paytime"/>
+			<result column="submit_time" property="submittime"/>
+			<result column="sign_time" property="signtime"/>
+			<result column="get_time" property="gettime"/>
+			<result column="refund_time" property="refundtime"/>
+			<result column="imageurl" property="imageurl"/>
+			<result column="original_price" property="originalprice"/>
 		</resultMap>
 		<select id="getOrderPay" parameterType="dsorder" resultMap="dsorderMap">
 			select * from ds_order where order_status=1
