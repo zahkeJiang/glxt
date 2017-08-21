@@ -1,17 +1,13 @@
 package com.bjpygh.glxt.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjpygh.glxt.dao.DsInfoDao;
+import com.bjpygh.glxt.dao.DsPackageDao;
 import com.bjpygh.glxt.entity.DsInformation;
 import com.bjpygh.glxt.entity.Status;
 import com.google.gson.Gson;
@@ -21,70 +17,72 @@ import com.google.gson.Gson;
 public class DsInfoController {
 
 	//删除驾校信息
-	@RequestMapping(value="/delete")
-	public void deleteDsInfo(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        response.setContentType("text/html;charset=utf-8");   
-		String dsname = request.getParameter("dsname");
+	@RequestMapping(value="/delete", method=RequestMethod.POST, produces="text/html;charset=UTF-8")
+	@ResponseBody
+	public String deleteDsInfo(String[] dsname) {
 		 DsInfoDao dsInfoDao = new DsInfoDao();
-	     dsInfoDao.deleteDsInfo(dsname);
-	     
+		 DsPackageDao packageDao = new DsPackageDao();
+		 Status status = new Status();
+		 if(dsname!=null){
+			 for(int i=0;i<dsname.length;i++){
+				 dsInfoDao.deleteDsInfo(dsname[i]);
+				 packageDao.deleteDsPackages(dsname[i]);
+			 }
+			 status.setStatus(0);
+			 status.setMsg("删除成功");
+			 return new Gson().toJson(status);
+		 }else{
+			 status.setStatus(-10);
+			 status.setMsg("提交数据为空");
+			 return new Gson().toJson(status); 
+		 }
 	}
 	
 	//插入驾校信息
-	@RequestMapping(value="/insert")
-	public void insertDsInfo(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@RequestMapping(value="/insert", method=RequestMethod.POST, produces="text/html;charset=UTF-8")
+	@ResponseBody
+	public String insertDsInfo(DsInformation dsInfo) {
+		DsInfoDao dsInfoDao = new DsInfoDao();
+		Status status = new Status();
+		if(dsInfo.getDsname()!=null&&dsInfoDao.selectDsInfo(dsInfo.getDsname())==null){
+			dsInfoDao.insertDsInfo(dsInfo);
+			status.setStatus(0);
+			status.setMsg("添加成功");
+			return new Gson().toJson(status);
+		}else{
+			status.setStatus(-10);
+			status.setMsg("请求数据错误");
+			return new Gson().toJson(status);
 		}
-        response.setContentType("text/html;charset=utf-8");   
-		String dsname = request.getParameter("dsname");
-        String dsimage = request.getParameter("dsimage");
-        String dsintro = request.getParameter("dsintro");
-        String address = request.getParameter("address");
-        
-        DsInfoDao dsInfoDao = new DsInfoDao();
-        
-        DsInformation dsInfo = new DsInformation();
-        dsInfo.setDsname(dsname);
-        dsInfo.setDsimage(dsimage);
-        dsInfo.setAddress(address);
-        dsInfo.setDsintro(dsintro);
-        
-        dsInfoDao.insertDsInfo(dsInfo);
-	     
 	}
 	
-	//删除驾校信息
-		@RequestMapping(value="/select")
-		public void selectDsInfo(HttpServletRequest request, HttpServletResponse response) {
-			
-			PrintWriter out;
-			try {
-				request.setCharacterEncoding("utf-8");
-		        response.setContentType("text/html;charset=utf-8");   
-				out = response.getWriter();
-				DsInfoDao dsInfoDao = new DsInfoDao();
-		        
-		        Status status = new Status();
-		        List<DsInformation> dspInfolist = dsInfoDao.selectDsInfoList();
-				status.setDspInfolist(dspInfolist);
-		        
-				Gson gson = new Gson();
-				out.print(gson.toJson(status));
-				out.flush();
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
+	//查询驾校信息
+		@RequestMapping(value="/select", method=RequestMethod.POST, produces="text/html;charset=UTF-8")
+		@ResponseBody
+		public String selectDsInfo(String dsname) {
+			DsInfoDao dsInfoDao = new DsInfoDao();
+		     
+			Status status = new Status();
+			if(dsname!=null){
+				
+				DsInformation dsInfo = dsInfoDao.selectDsInfo(dsname);
+				if(dsInfo!=null){
+					status.setStatus(0);
+					status.setMsg(dsname+"获取成功");
+					status.setData(dsInfoDao.selectDsInfo(dsname));
+					return new Gson().toJson(status);
+				}else{
+					status.setStatus(-10);
+					status.setMsg("查询信息不存在");
+					return new Gson().toJson(status);
+				}
+			}else{
+				status.setStatus(0);
+				status.setMsg("获取成功");
+				status.setData(dsInfoDao.selectDsInfoList());
+				return new Gson().toJson(status);
 			}
+		   	
 		}
 	
 	

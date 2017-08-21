@@ -18,6 +18,9 @@
 		<delete id="deleteDsPackage" parameterType="int">
 			delete from ds_package where packageid = #{packageid}
 		</delete>
+		<delete id="deleteDsPackages" parameterType="string">
+			delete from ds_package where ds_name = #{dsname}
+		</delete>
 		<select id="selectDsPackage" parameterType="string" resultMap="dspackageMap">
 			select * from ds_package where ds_name like '%' #{dsname} '%'
 		</select>

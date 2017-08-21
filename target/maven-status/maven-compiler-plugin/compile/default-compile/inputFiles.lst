@@ -16,5 +16,6 @@ D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\DsOrder.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\mapper\DsPackageMapper.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\PackageController.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\Status.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\Main.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\DsImage.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\utils\SqlSessionFactoryUtil.java

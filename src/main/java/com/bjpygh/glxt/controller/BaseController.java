@@ -8,11 +8,13 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class BaseController{
 
-	public String LoginStatus(HttpSession session){
+	public boolean isLogin(HttpSession session){
 		
-		if(!(boolean) session.getAttribute("loginstatus")){
-			return "index";
+		if(!(session.getAttribute("login").equals("true"))){
+			return true;
+		}else{
+			return false;
 		}
-		return null;
+		
 	}
 }

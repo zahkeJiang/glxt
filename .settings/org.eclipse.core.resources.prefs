@@ -1,4 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/bjpygh/glxt/controller/BaseController.java=UTF-8
 encoding//src/main/java/com/bjpygh/glxt/controller/ImageController.java=UTF-8
+encoding//src/main/java/com/bjpygh/glxt/controller/LoginController.java=UTF-8
+encoding//src/main/java/com/bjpygh/glxt/entity/Employee.java=UTF-8
+encoding//src/main/java/com/bjpygh/glxt/entity/Status.java=UTF-8
 encoding//src/main/java/com/bjpygh/glxt/utils/VerifyCodeUtils.java=UTF-8
+encoding//src/main/resources/mybatis-config.xml=UTF-8
 encoding/<project>=UTF-8

@@ -47,6 +47,23 @@ SqlSession sqlSession = null;
 		}
 	}
 	
+	//删除驾校信息
+		public void deleteDsPackages(String dsname){
+			try {
+				sqlSession = SqlSessionFactoryUtil.openSqlSession();
+				DsPackageMapper dsPackageMapper = sqlSession.getMapper(DsPackageMapper.class);
+				dsPackageMapper.deleteDsPackages(dsname);
+				sqlSession.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				sqlSession.rollback();
+			}finally{
+				if (sqlSession != null){
+					sqlSession.close();
+				}
+			}
+		}
+	
 	//查询驾校信息
 		public List<DsPackage> selectDsPackage(String dsname){
 			List<DsPackage> dspList = null;
