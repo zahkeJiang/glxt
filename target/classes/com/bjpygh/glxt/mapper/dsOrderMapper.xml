@@ -18,16 +18,79 @@
 			<result column="note" property="note"/>
 			<result column="user_id" property="userid"/>
 		</resultMap>
-		<select id="getOrderByRealName" parameterType="string" resultMap="dsorderMap">
-			select * from ds_order where real_name like '%' #{realname} '%'
+		<select id="getOrderPay" parameterType="dsorder" resultMap="dsorderMap">
+			select * from ds_order where order_status=1
+			<choose>
+				<when test="dsname != null and dsname !=''">
+				AND ds_name like '%' #{dsname} '%'
+				</when>
+				<when test="address != null and address !=''">
+				AND address like '%' #{address} '%'
+				</when>
+				<when test="realname != null and realname !=''">
+				AND real_name like '%' #{realname} '%'
+				</when>
+			</choose>
 		</select>
 		
-		<select id="getOrderById" parameterType="string" resultMap="dsorderMap">
-			select * from ds_order where real_name = #{realname}
+		<select id="getOrderGet" parameterType="dsorder" resultMap="dsorderMap">
+			select * from ds_order where order_status=2
+			<choose>
+				<when test="dsname != null and dsname !=''">
+				AND ds_name like '%' #{dsname} '%'
+				</when>
+				<when test="address != null and address !=''">
+				AND address like '%' #{address} '%'
+				</when>
+				<when test="realname != null and realname !=''">
+				AND real_name like '%' #{realname} '%'
+				</when>
+			</choose>
 		</select>
 		
-		<select id="getStatusById" parameterType="string" resultType="string">
-			select order_status from ds_order where user_id = #{userid}
+		<select id="getOrderSign" parameterType="dsorder" resultMap="dsorderMap">
+			select * from ds_order where order_status=3
+			<choose>
+				<when test="dsname != null and dsname !=''">
+				AND ds_name like '%' #{dsname} '%'
+				</when>
+				<when test="address != null and address !=''">
+				AND address like '%' #{address} '%'
+				</when>
+				<when test="realname != null and realname !=''">
+				AND real_name like '%' #{realname} '%'
+				</when>
+			</choose>
+		</select>
+		
+		<select id="getOrderFinish" parameterType="dsorder" resultMap="dsorderMap">
+			select * from ds_order where order_status=4
+			<choose>
+				<when test="dsname != null and dsname !=''">
+				AND ds_name like '%' #{dsname} '%'
+				</when>
+				<when test="address != null and address !=''">
+				AND address like '%' #{address} '%'
+				</when>
+				<when test="realname != null and realname !=''">
+				AND real_name like '%' #{realname} '%'
+				</when>
+			</choose>
+		</select>
+		
+		<select id="getOrders" parameterType="dsorder" resultMap="dsorderMap">
+			select * from ds_order where 1=1
+			<choose>
+				<when test="dsname != null and dsname !=''">
+				AND ds_name like '%' #{dsname} '%'
+				</when>
+				<when test="realname != null and realname !=''">
+				AND real_name like '%' #{realname} '%'
+				</when>
+				<when test="ordernumber != null and ordernumber !=''">
+				AND order_number like = #{ordernumber} 
+				</when>
+			</choose>
 		</select>
 		
 		<update id="changeStatus" parameterType="map">

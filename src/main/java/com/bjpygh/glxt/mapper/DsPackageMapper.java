@@ -8,5 +8,6 @@ public interface DsPackageMapper {
 	
 	public void insertDsPackage(DsPackage dsPackage);
 	public void deleteDsPackage(int packageid);
+	public void deleteDsPackages(String dsname);
 	public List<DsPackage> selectDsPackage(String dsname);
 }

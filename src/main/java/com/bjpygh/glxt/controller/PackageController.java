@@ -2,12 +2,15 @@ package com.bjpygh.glxt.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjpygh.glxt.dao.DsInfoDao;
 import com.bjpygh.glxt.dao.DsPackageDao;
@@ -21,87 +24,72 @@ import com.google.gson.Gson;
 public class PackageController {
 
 	//删除套餐信息
-	@RequestMapping(value="/delete")
-	public void deletePackage(HttpServletRequest request, HttpServletResponse response) {
-			PrintWriter out;
-		try {
-			out = response.getWriter();
-			String packageid = request.getParameter("packageid");
+	@RequestMapping(value="/delete", method=RequestMethod.POST, produces="text/html;charset=UTF-8")
+	@ResponseBody
+	public String deletePackage(String[] packageid) {
+			
 		    DsPackageDao dsPackageDao = new DsPackageDao();
-		    dsPackageDao.deleteDsPackage(packageid);
 		    Status status = new Status();
-		    status.setStatus(1);
-		    out.print(new Gson().toJson(status));
-		    out.flush();
-		    out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		     
+		    if(packageid.length>0){
+		    	for(int i=0;i<packageid.length;i++){
+		    		dsPackageDao.deleteDsPackage(packageid[i]);
+		    	}
+			    status.setStatus(0);
+			    status.setMsg("删除成功");
+			    return new Gson().toJson(status);
+		    }else{
+		    	status.setStatus(-10);
+			    status.setMsg("传入参数错误");
+			    return new Gson().toJson(status);
+		    }
 	}
 	
 	//插入套餐信息
-	@RequestMapping(value="/insert")
-	public void insertPackage(HttpServletRequest request, HttpServletResponse response) {
-			PrintWriter out;
-		try {
-			out = response.getWriter();
-		       
-		    String dsname = request.getParameter("dsname");
-		    String dstype = request.getParameter("dstype");
-		    String models = request.getParameter("models");
-		    String traintime = request.getParameter("traintime");
-		    String price = request.getParameter("price");
-		    String description = request.getParameter("description");
-		        
-		    DsPackageDao dsPackageDao = new DsPackageDao();
-		        
-		    DsPackage dsPackage = new DsPackage();
-		    dsPackage.setDsname(dsname);
-		    dsPackage.setDstype(dstype);
-		    dsPackage.setModels(models);
-		    dsPackage.setTraintime(traintime);
-		    dsPackage.setPrice(Integer.parseInt(price));
-		    dsPackage.setDescription(description);
-		        
-		    dsPackageDao.insertDsPackage(dsPackage);
-		        
-		    Status status = new Status();
-		    status.setStatus(1);
-		    out.print(new Gson().toJson(status));
-		    out.flush();
-		    out.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	@RequestMapping(value="/insert", method=RequestMethod.POST, produces="text/html;charset=UTF-8")
+	@ResponseBody
+	public String insertPackage(DsPackage dsPackage) {
+		
+		DsPackageDao dsPackageDao = new DsPackageDao();
+		Status status = new Status();
+		if(dsPackage.getDsname()!=null&&dsPackageDao.selectDsPackage(dsPackage.getDsname())==null){
+			dsPackageDao.insertDsPackage(dsPackage);
+			status.setStatus(0);
+			status.setMsg("添加成功");
+			return new Gson().toJson(status);
+		}else{
+			status.setStatus(-10);
+			status.setMsg("请求数据错误");
+			return new Gson().toJson(status);
 		}
-			     
+			   
 	}
 	
 	//删除套餐信息
-		@RequestMapping(value="/select")
-		public void selectPackage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-			PrintWriter out = response.getWriter();
-			String dsname = request.getParameter("dsname");
+		@RequestMapping(value="/select", method=RequestMethod.POST, produces="text/html;charset=UTF-8")
+		@ResponseBody
+		public String selectPackage(String dsname) throws IOException {
+			
 			DsPackageDao dsPackageDao = new DsPackageDao();
-			 Gson gson = new Gson();
-			 Status status = new Status();
-			    try {
-			    	DsInfoDao dsInfoDao = new DsInfoDao();
-			           
-			        DsInformation dsInfo = dsInfoDao.selectDsInfo(dsname);
-			        dsInfo.setDspList(dsPackageDao.selectDsPackage(dsname));
-			        out.print(gson.toJson(dsInfo));
-			    } catch (NullPointerException e) {
-					
-			        status.setStatus(1);
-			        status.setDsplist(dsPackageDao.selectDsPackage(dsname));
-			        out.print(gson.toJson(status));
-				}finally{
-					out.flush();
-					out.close();
+			Status status = new Status();
+			if(dsname!=null){
+				
+				List<DsPackage> dsPackage = dsPackageDao.selectDsPackage(dsname);
+				if(dsPackage.size()>0){
+					status.setStatus(0);
+					status.setMsg(dsname+"获取成功");
+					status.setData(dsPackage);
+					return new Gson().toJson(status);
+				}else{
+					status.setStatus(-10);
+					status.setMsg("查询信息不存在");
+					return new Gson().toJson(status);
 				}
+			}else{
+				status.setStatus(0);
+				status.setMsg("获取成功");
+				status.setData(dsPackageDao.selectDsPackage(dsname));
+				return new Gson().toJson(status);
+			}
 			     
 		}
 	

@@ -1,0 +1,40 @@
+
+.user_information{
+	width: 600px;
+	margin: 10px auto;
+	-webkit-box-shadow: 0px 0px 10px  #ccc; 
+  	-moz-box-shadow: 0px 0px 10px  #ccc; 
+	box-shadow: 0px 0px 10px #ccc;
+}
+.user_information_title{
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #eee;
+	color: #999;
+	padding: 0 16px;
+}
+.row{
+	display: flex;
+	padding: 2px 16px;
+}
+.row p{
+	font-size: 14px;
+}
+.submit_order{
+	display: flex;
+	padding:5px 0;
+	align-items: center;
+}
+.submit_time{
+	width: 100px;
+	padding-left: 16px;
+}
+.submit_time span{
+	font-size: 14px;
+	color: #999;
+}
+.submit_hint{
+	padding: 0 16px;
+	font-size: 14px;
+}
+

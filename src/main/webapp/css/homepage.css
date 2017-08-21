@@ -1,0 +1,93 @@
+
+.container{
+	padding-top: 80px;
+}
+.container_menu{
+	margin: auto;	
+	width: 85%;
+
+}
+.container_menu ul{
+	display: flex;
+	justify-content: space-around;
+}
+.container_menu ul li{
+	cursor:pointer;
+	margin: 20px;
+	background-color: #26C7db;
+	width: 100%;
+	height: 220px;
+	float: left;
+	-webkit-box-shadow: 0px 0px 10px  #ccc; 
+  	-moz-box-shadow: 0px 0px 10px  #ccc; 
+	box-shadow: 0px 0px 10px #ccc;
+}
+.container_menu_ds_enter_bg{
+	height: 160px;
+	background: url(../images/container_menu_ds_enter_bg.png)no-repeat center;
+	background-size: 60%;
+}
+.container_menu_ds_apply_bg{
+	height: 160px;
+	background: url(../images/container_menu_ds_apply_bg.png)no-repeat center;
+	background-size: 60%;
+}
+.container_menu_order_bg{
+	height: 160px;
+	background: url(../images/container_menu_order_bg.png)no-repeat center;
+	background-size: 60%;
+}
+.container_menu_academic_enter_bg{
+	height: 160px;
+	background: url(../images/container_menu_academic_enter_bg.png)no-repeat center;
+	background-size: 60%;
+}
+.container_menu_league_building_bg{
+	height: 160px;
+	background: url(../images/container_menu_league_building_bg.png)no-repeat center;
+	background-size: 60%;
+}
+.container_menu ul li p{
+	-webkit-box-shadow:inset 0px 2px 5px  #ccc; 
+  	-moz-box-shadow:inset 0px 2px 5px  #ccc; 
+  	box-shadow:inset 0px 2px 5px #ccc;
+	background-color: white;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.container_search{
+	height: auto;
+	width: 85%;	
+	margin:auto;
+}
+.container_search_order{
+	height: auto;
+	width: 100%;
+	margin: auto;
+	display: flex;
+	margin:80px 0;
+	justify-content: center;
+	align-items: center;
+}
+.container_search_order p{
+	cursor:pointer;
+	width: 80px;
+	height: 38px;
+	text-align: center;
+	line-height: 38px;
+	color: white;
+	background-color: #26C7db;
+}
+input[name="search_order"]{
+	padding-left: 10px;
+	height: 36px;
+	width: 30%;
+	border-radius: 2px;
+	border:1px solid #26C7db;
+	background:url(../images/search.png)no-repeat right center;
+	background-size: 24px;
+	padding-right: 30px;
+	line-height: 36px;
+}

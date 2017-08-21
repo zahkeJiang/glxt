@@ -14,14 +14,13 @@ public class DsOrderDao {
 
 	SqlSession sqlSession = null;
 
-	
 	//鑾峰彇璁㈠崟淇℃伅
-	public List<DsOrder> getOrderByRealName(String realname){
+	public List<DsOrder> getOrderPay(DsOrder dsorder){
 		List<DsOrder> dsOrder = null;
 		try {
 			sqlSession = SqlSessionFactoryUtil.openSqlSession();
 			DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
-			dsOrder = dsOrderMapper.getOrderByRealName(realname);
+			dsOrder = dsOrderMapper.getOrderPay(dsorder);
 			sqlSession.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,22 +32,80 @@ public class DsOrderDao {
 		}
 		return dsOrder;
 	}
-		
 	
-		//鎻掑叆璁㈠崟
-				public void changeStatus(Map<String, String> map){
-					try {
-						sqlSession = SqlSessionFactoryUtil.openSqlSession();
-						DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
-						dsOrderMapper.changeStatus(map);
-						sqlSession.commit();
-					} catch (Exception e) {
-						e.printStackTrace();
-						sqlSession.rollback();
-					}finally{
-						if (sqlSession != null){
-							sqlSession.close();
-						}
-					}
-				}
+	//鑾峰彇璁㈠崟淇℃伅
+	public List<DsOrder> getOrderGet(DsOrder dsorder){
+		List<DsOrder> dsOrder = null;
+		try {
+			sqlSession = SqlSessionFactoryUtil.openSqlSession();
+			DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+			dsOrder = dsOrderMapper.getOrderGet(dsorder);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally{
+			if (sqlSession != null){
+				sqlSession.close();
+			}
+		}
+		return dsOrder;
+	}	
+
+	//鑾峰彇璁㈠崟淇℃伅
+	public List<DsOrder> getOrderSign(DsOrder dsorder){
+		List<DsOrder> dsOrder = null;
+		try {
+			sqlSession = SqlSessionFactoryUtil.openSqlSession();
+			DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+			dsOrder = dsOrderMapper.getOrderSign(dsorder);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally{
+			if (sqlSession != null){
+				sqlSession.close();
+			}
+		}
+		return dsOrder;
+	}	
+
+	//鑾峰彇璁㈠崟淇℃伅
+	public List<DsOrder> getOrderFinish(DsOrder dsorder){
+		List<DsOrder> dsOrder = null;
+		try {
+			sqlSession = SqlSessionFactoryUtil.openSqlSession();
+			DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+			dsOrder = dsOrderMapper.getOrderFinish(dsorder);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally{
+			if (sqlSession != null){
+				sqlSession.close();
+			}
+		}
+		return dsOrder;
+	}	
+
+	//鑾峰彇璁㈠崟淇℃伅
+	public List<DsOrder> getOrders(DsOrder dsorder){
+		List<DsOrder> dsOrder = null;
+		try {
+			sqlSession = SqlSessionFactoryUtil.openSqlSession();
+			DsOrderMapper dsOrderMapper = sqlSession.getMapper(DsOrderMapper.class);
+			dsOrder = dsOrderMapper.getOrders(dsorder);
+			sqlSession.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+		}finally{
+			if (sqlSession != null){
+				sqlSession.close();
+			}
+		}
+		return dsOrder;
+	}	
 }

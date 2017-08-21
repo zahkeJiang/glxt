@@ -24,6 +24,7 @@
 		<mappers>
 			<mapper resource="com/bjpygh/glxt/mapper/dsInfoMapper.xml"/>
 			<mapper resource="com/bjpygh/glxt/mapper/dsPackageMapper.xml"/>
+			<mapper resource="com/bjpygh/glxt/mapper/dsOrderMapper.xml"/>
 		</mappers>
 		
 </configuration>
