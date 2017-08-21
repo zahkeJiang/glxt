@@ -2,6 +2,8 @@ D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\OrderController.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\DsInformation.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\Employee.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\mapper\DsInfoMapper.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\UserCouponDao.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\UserCoupon.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\DsInfoDao.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\BaseController.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\DsPackageDao.java
@@ -18,4 +20,5 @@ D:\java\glxt\src\main\java\com\bjpygh\glxt\controller\PackageController.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\Status.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\dao\Main.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\entity\DsImage.java
+D:\java\glxt\src\main\java\com\bjpygh\glxt\mapper\UserCouponMapper.java
 D:\java\glxt\src\main\java\com\bjpygh\glxt\utils\SqlSessionFactoryUtil.java

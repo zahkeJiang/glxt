@@ -1,14 +1,12 @@
 package com.bjpygh.glxt.controller;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +29,7 @@ public class LoginController {
 				if(employee.getAccount().equals("201707060001")&&employee.getPassword().equals("201701")){
 					status.setStatus(0);	
 					status.setMsg("登录成功");
+					session.removeAttribute("verifyCode");
 					session.setAttribute("login", "true");
 					return new Gson().toJson(status);
 				}else{

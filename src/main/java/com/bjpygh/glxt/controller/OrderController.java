@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bjpygh.glxt.dao.DsInfoDao;
 import com.bjpygh.glxt.dao.DsOrderDao;
-import com.bjpygh.glxt.entity.DsInformation;
+import com.bjpygh.glxt.dao.UserCouponDao;
 import com.bjpygh.glxt.entity.DsOrder;
 import com.bjpygh.glxt.entity.Status;
 import com.google.gson.Gson;
@@ -24,6 +23,7 @@ public class OrderController {
 	@ResponseBody
 	public String payed(DsOrder dsOrder) {
 		DsOrderDao dsOrderDao = new DsOrderDao();
+		UserCouponDao userCouponDao = new UserCouponDao();
 		Status status = new Status();
 		List<DsOrder> order = dsOrderDao.getOrderPay(dsOrder);
 		if(order!=null){
